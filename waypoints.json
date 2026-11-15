@@ -1,0 +1,67 @@
+[
+  {
+    "id": "octavia_butler",
+    "name": "Octavia E. Butler Landing Site",
+    "type": "Base / Landing Zone",
+    "lat": 18.4447,
+    "lon": 77.4508,
+    "elevation_m": -2569,
+    "hazard_level": "Low",
+    "summary": "Touchdown site of NASA's Perseverance rover (Feb 18, 2021) on the flat crater floor.",
+    "science_goal": "Baseline calibration and thermal/atmospheric station deployment.",
+    "image_url": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00003/ids/edr/browse/ncam/NLF_0003_0667220263_000ECM_N0010052NCAM00003_01_295J01_1200.jpg",
+    "image_credit": "NASA/JPL-Caltech (Sol 3 Navcam)"
+  },
+  {
+    "id": "seitah",
+    "name": "South Séítah Sand Dunes & Ridges",
+    "type": "Hazard / Olivine Outcrop",
+    "lat": 18.4310,
+    "lon": 77.4415,
+    "elevation_m": -2575,
+    "hazard_level": "High",
+    "summary": "Region of deep wind-blown sand ripples and rugged olivine-bearing bedrock.",
+    "science_goal": "Study igneous rock alteration by ancient groundwater.",
+    "image_url": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00201/ids/edr/browse/zcam/ZL0_0201_0684795866_408EBY_N0071336ZCAM08206_1100LMJ01_1200.jpg",
+    "image_credit": "NASA/JPL-Caltech/ASU (Sol 201 Mastcam-Z)"
+  },
+  {
+    "id": "three_forks",
+    "name": "Three Forks Sample Depot",
+    "type": "Mission Cache / Delta Base",
+    "lat": 18.4585,
+    "lon": 77.4045,
+    "elevation_m": -2555,
+    "hazard_level": "Low",
+    "summary": "Flat, stable ground at the base of the western river delta where 10 sample tubes were cached.",
+    "science_goal": "Primary staging area before ascending the steep delta front.",
+    "image_url": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00682/ids/edr/browse/ncam/NLF_0682_0727488255_834ECM_N0320000NCAM02682_04_195J01_1200.jpg",
+    "image_credit": "NASA/JPL-Caltech (Sol 682 Navcam)"
+  },
+  {
+    "id": "western_delta",
+    "name": "Jezero Western River Delta Front",
+    "type": "High-Priority Astrobiology Target",
+    "lat": 18.4720,
+    "lon": 77.3890,
+    "elevation_m": -2510,
+    "hazard_level": "High",
+    "summary": "Steep layered sedimentary cliff formed 3.5 billion years ago where a river flowed into Lake Jezero.",
+    "science_goal": "Search for concentrated organic molecules and microbial biosignatures in mudstones.",
+    "image_url": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00415/ids/edr/browse/zcam/ZL0_0415_0703794957_038EBY_N0220366ZCAM08446_1100LMJ01_1200.jpg",
+    "image_credit": "NASA/JPL-Caltech/ASU (Sol 415 Mastcam-Z)"
+  },
+  {
+    "id": "neretva_vallis",
+    "name": "Neretva Vallis Ancient Inlet Channel",
+    "type": "Geologic Corridor",
+    "lat": 18.4950,
+    "lon": 77.3350,
+    "elevation_m": -2465,
+    "hazard_level": "Moderate",
+    "summary": "Carved river valley through Jezero's western rim that fed water into the crater lake.",
+    "science_goal": "Examine bright-toned carbonate rocks and crater rim transition.",
+    "image_url": "https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/01150/ids/edr/browse/zcam/ZL0_1150_0769031523_526EBY_N0540000ZCAM09242_1100LMJ01_1200.jpg",
+    "image_credit": "NASA/JPL-Caltech/ASU (Sol 1150 Mastcam-Z)"
+  }
+]

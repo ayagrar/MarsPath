@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarsPath — Jezero Crater Astronaut Route Planner</title>
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Left Sidebar: Mission Control -->
+    <aside class="sidebar">
+      <header class="brand">
+        <h1>MARSPATH</h1>
+        <p class="subtitle">Jezero Crater EVA Tactical Planner</p>
+      </header>
+
+      <!-- Layer Controls -->
+      <section class="panel">
+        <h2>Map Data Layers</h2>
+        <label class="toggle-row">
+          <input type="checkbox" id="toggle-elevation" />
+          <span>MOLA Elevation Hillshade</span>
+        </label>
+        <label class="toggle-row">
+          <input type="checkbox" id="toggle-geology" checked />
+          <span>USGS Geologic Units (SIM 3292)</span>
+        </label>
+        <label class="toggle-row">
+          <input type="checkbox" id="toggle-waypoints" checked />
+          <span>Perseverance Science Waypoints</span>
+        </label>
+      </section>
+
+      <label class="toggle-row">
+          <input type="checkbox" id="toggle-waypoints" checked />
+          <span>Perseverance Science Waypoints</span>
+        </label>
+      </section>
+
+      <!-- EVA Route Planner -->
+      <section class="panel">
+        <h2>EVA Route Planner</h2>
+        <div class="form-group">
+          <label for="route-start">Start Waypoint</label>
+          <select id="route-start"></select>
+        </div>
+        <div class="form-group">
+          <label for="route-end">Destination Waypoint</label>
+          <select id="route-end"></select>
+        </div>
+        <div class="btn-row">
+          <button id="btn-plan-route" class="btn-primary">Evaluate Traverse</button>
+          <button id="btn-clear-route" class="btn-secondary">Clear</button>
+        </div>
+        <div id="route-results" class="route-results"></div>
+      </section>
+
+      <!-- Inspector Panel (Updates when user clicks a waypoint or geologic unit) -->
+      <section class="panel inspector" id="inspector-panel">
+        <h2>Surface Inspector</h2>
+        <p class="muted">Click any rover waypoint or colored geologic region on the map to inspect terrain hazards and science data.</p>
+      </section>
+
+      <footer class="disclaimer">
+        <strong>Educational Simulation Only:</strong> Not a certified flight or EVA safety system. Data: NASA/JPL Mars Trek & USGS Astrogeology.
+      </footer>
+    </aside>
+
+    <!-- Right Main View: Interactive Mars Map -->
+    <main id="map"></main>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
