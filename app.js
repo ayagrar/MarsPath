@@ -2,9 +2,9 @@
 const map = L.map("map", {
   crs: L.CRS.EPSG4326,
   center: [18.458, 77.410],
-  zoom: 11,
-  minZoom: 3,
-  maxZoom: 15
+  zoom: 8,
+  minZoom: 2,
+  maxZoom: 14
 });
 
 // 2. NASA JPL Mars Trek Base Optical Layer (Viking Color Mosaic)
@@ -13,6 +13,7 @@ const vikingOpticalLayer = L.tileLayer(
   {
     attribution: "NASA/JPL-Caltech Mars Trek",
     tileSize: 256,
+    maxNativeZoom: 8,
     noWrap: true
   }
 ).addTo(map);
@@ -23,6 +24,7 @@ const molaElevationLayer = L.tileLayer(
   {
     attribution: "NASA/JPL MOLA",
     tileSize: 256,
+    maxNativeZoom: 7,
     opacity: 0.55,
     noWrap: true
   }
@@ -35,9 +37,20 @@ let activeRouteLine = null;
 
 const inspector = document.getElementById("inspector-panel");
 
+// Helper: Try loading from data/ first, then fallback to root folder
+async function fetchJsonSmart(filename) {
+  let res = await fetch(`data/${filename}`);
+  if (!res.ok) {
+    res = await fetch(filename);
+  }
+  if (!res.ok) {
+    throw new Error(`Could not find ${filename}`);
+  }
+  return res.json();
+}
+
 // 4. Load Enriched USGS Geology GeoJSON
-fetch("data/jezero_geology.geojson")
-  .then((res) => res.json())
+fetchJsonSmart("jezero_geology.geojson")
   .then((geoData) => {
     geologyLayer = L.geoJSON(geoData, {
       style: (feature) => ({
@@ -64,8 +77,7 @@ fetch("data/jezero_geology.geojson")
   .catch((err) => console.error("Error loading geology GeoJSON:", err));
 
 // 5. Load Perseverance Science Waypoints
-fetch("data/waypoints.json")
-  .then((res) => res.json())
+fetchJsonSmart("waypoints.json")
   .then((waypoints) => {
     allWaypoints = waypoints;
     const startSelect = document.getElementById("route-start");
@@ -153,7 +165,7 @@ document.getElementById("btn-plan-route").addEventListener("click", () => {
   const endId = document.getElementById("route-end").value;
   const resultsBox = document.getElementById("route-results");
 
-  if (startId === endId) {
+  if (!startId || !endId || startId === endId) {
     resultsBox.innerHTML = `<div class="warning-box">Select two distinct waypoints to calculate a traverse.</div>`;
     return;
   }
@@ -177,7 +189,7 @@ document.getElementById("btn-plan-route").addEventListener("click", () => {
     }
   ).addTo(map);
 
-  map.fitBounds(activeRouteLine.getBounds(), { padding: [60, 60] });
+  map.fitBounds(activeRouteLine.getBounds(), { padding: [60, 60], maxZoom: 10 });
 
   const distanceKm = calculateMarsDistanceKm(startWp.lat, startWp.lon, endWp.lat, endWp.lon);
   const elevDelta = endWp.elevation_m - startWp.elevation_m;
