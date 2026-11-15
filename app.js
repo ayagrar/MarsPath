@@ -2,17 +2,18 @@
 const map = L.map("map", {
   crs: L.CRS.EPSG4326,
   center: [18.458, 77.410],
-  zoom: 8,
+  zoom: 9,
   minZoom: 2,
   maxZoom: 14
 });
 
-// 2. NASA JPL Mars Trek Base Optical Layer (Viking Color Mosaic)
+// 2. NASA JPL Mars Trek Base Optical Layer (Viking Color Mosaic with EPSG:4326 zoomOffset)
 const vikingOpticalLayer = L.tileLayer(
   "https://trek.nasa.gov/tiles/Mars/EQ/Mars_Viking_MDIM21_ClrMosaic_global_232m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg",
   {
     attribution: "NASA/JPL-Caltech Mars Trek",
     tileSize: 256,
+    zoomOffset: -1,
     maxNativeZoom: 8,
     noWrap: true
   }
@@ -24,6 +25,7 @@ const molaElevationLayer = L.tileLayer(
   {
     attribution: "NASA/JPL MOLA",
     tileSize: 256,
+    zoomOffset: -1,
     maxNativeZoom: 7,
     opacity: 0.55,
     noWrap: true
